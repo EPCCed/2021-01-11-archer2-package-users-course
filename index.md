@@ -12,7 +12,7 @@ startdate:
 enddate: 
 instructor: ["Julien Sindt"]
 helper: ["Caoimhín Laoide-Kemp and George Beckett"]
-email: ["J.Sindt@epcced.ac.uk"]
+email: ["J.Sindt@epcc.ed.ac.uk"]
 collaborative_notes: 
 eventbrite: 
 root: .

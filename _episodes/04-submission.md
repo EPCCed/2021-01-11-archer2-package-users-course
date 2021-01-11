@@ -142,12 +142,13 @@ two nodes.
 #SBATCH --ntasks-per-node=128
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0:10:0
-#SBATCH --account=t01
+#SBATCH --account=ta014
 #SBATCH --partition=standard
 #SBATCH --qos=standard
 
-# This module needs to be loaded in ALL scripts
-module load epcc-job-env
+# This will restore the appropriate programming environment
+# (in this case, the GNU PE)
+module restore /etc/cray-pe.d/PrgEnv-gnu
 
 # Now load the "xthi" package
 module load xthi
@@ -156,7 +157,7 @@ export OMP_NUM_THREADS=1
 
 # Load modules, etc.
 # srun to launch the executable
-srun --cpu-bind=cores xthi
+srun --distribution=block:block --hint=nomultithread xthi
 ```
 {: .language-bash}
 
@@ -167,7 +168,7 @@ The options shown here are:
 * `--ntasks-per-node=128` - Set 128 parallel processes per node (usually corresponds to MPI ranks)
 * `--cpus-per-task=1` - Number of cores to allocate per parallel process 
 * `--time=0:10:0` - Set 10 minutes maximum walltime for this job
-* `--account=t01` - Charge the job to the `t01` budget
+* `--account=ta014` - Charge the job to the `ta014` budget
 
 We will discuss the `srun` command further below.
 
@@ -206,7 +207,7 @@ Slurm reports back with the job ID for the job you have submitted
 > > ```
 > > #!/bin/bash
 > > #SBATCH --job-name=my_mpi_job
-> > #SBATCH --account=t01
+> > #SBATCH --account=ta014
 > > module load epcc-job-env
 > > ...
 > > echo "Nodes: $SLURM_JOB_NUM_NODES"
@@ -339,12 +340,13 @@ per node and 16 OpenMP threads per MPI task (so all 256 cores across both nodes 
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 #SBATCH --time=0:10:0
-#SBATCH --account=t01
+#SBATCH --account=ta014
 #SBATCH --partition=standard
 #SBATCH --qos=standard
 
-# This module needs to be loaded in ALL scripts
-module load epcc-job-env
+# This will restore the appropriate programming environment
+# (in this case, the GNU PE)
+module restore /etc/cray-pe.d/PrgEnv-gnu
 
 # Now load the "xthi" package
 module load xthi
@@ -400,7 +402,7 @@ For example, to execute `xthi` across all cores on two nodes (1 MPI task per cor
 OpenMP threading) within an interactive job you would issue the following commands:
 
 ```
-auser@uan01:~> srun --partition=standard --qos=standard --nodes=2 --ntasks-per-node=128 --cpus-per-task=1 --time=0:10:0 --account=t01 xthi
+auser@uan01:~> srun --partition=standard --qos=standard --nodes=2 --ntasks-per-node=128 --cpus-per-task=1 --time=0:10:0 --account=ta014 xthi
 ```
 {: .language-bash}
 ```

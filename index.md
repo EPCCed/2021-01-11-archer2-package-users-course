@@ -10,9 +10,9 @@ humandate:
 humantime: 
 startdate: 
 enddate: 
-instructor: ["Kevin Stratford"]
-helper: ["Juan Rodriguez Herrera"]
-email: ["kevin@epcc.ed.ac.uk"]
+instructor: ["Julien Sindt"]
+helper: ["Caoimhín Laoide-Kemp and George Beckett"]
+email: ["J.Sindt@epcced.ac.uk"]
 collaborative_notes: 
 eventbrite: 
 root: .

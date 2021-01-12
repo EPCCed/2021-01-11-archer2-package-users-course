@@ -148,7 +148,7 @@ two nodes.
 
 # This will restore the appropriate programming environment
 # (in this case, the GNU PE)
-module restore /etc/cray-pe.d/PrgEnv-gnu
+module load epcc-job-env
 
 # Now load the "xthi" package
 module load xthi
@@ -346,7 +346,7 @@ per node and 16 OpenMP threads per MPI task (so all 256 cores across both nodes 
 
 # This will restore the appropriate programming environment
 # (in this case, the GNU PE)
-module restore /etc/cray-pe.d/PrgEnv-gnu
+module load epcc-job-env
 
 # Now load the "xthi" package
 module load xthi

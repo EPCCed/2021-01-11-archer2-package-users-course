@@ -216,7 +216,7 @@ Slurm reports back with the job ID for the job you have submitted
 > > 
 > > export OMP_NUM_THREADS=1
 > > 
-> > srun --cpu-bind=cores xthi
+> > srun --distribution=block:block --hint=nomultithread xthi
 > > ```
 > > {: .language-bash}
 > > 
@@ -289,7 +289,7 @@ values supplied to `sbatch` to work out how many parallel processes to launch). 
 our `srun` command simply looks like:
 
 ```
-srun --cpu-bind=cores xthi
+srun --distribution=block:block --hint=nomultithread xthi
 ```
 {: .language-bash}
 
